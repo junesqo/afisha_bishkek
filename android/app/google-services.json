@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "656207222101",
+    "firebase_url": "https://bishkek-events.firebaseio.com",
+    "project_id": "bishkek-events",
+    "storage_bucket": "bishkek-events.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:656207222101:android:0723163e193ddb850e8bdc",
+        "android_client_info": {
+          "package_name": "com.nesqo.bishkekevents"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "656207222101-rvhq1f22nriou3vvir18rppa5lthvuv1.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.nesqo.bishkekevents",
+            "certificate_hash": "2493bf3e919c83a7f5d8caad7deecba1a47a3b3e"
+          }
+        },
+        {
+          "client_id": "656207222101-4d5gtp42sjrsibp026tmlcnje2uucv9b.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAfnlo1VqUC4Yp_6VDzoD25vF-aCQxCfno"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "656207222101-4d5gtp42sjrsibp026tmlcnje2uucv9b.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
