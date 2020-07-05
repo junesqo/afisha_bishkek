@@ -1,1 +1,1 @@
-# afisha_bishkek
+# bishkek_events
