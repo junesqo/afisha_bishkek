@@ -1,5 +1,6 @@
 import 'package:bishkekevents/screens/home_screen.dart';
 import 'package:bishkekevents/screens/search_screen.dart';
+import 'package:bishkekevents/screens/userscreen.dart';
 import 'package:flutter/material.dart';
 import 'package:bishkekevents/screens/userscreen.dart';
 import 'package:bishkekevents/helper/colorsys.dart';
@@ -92,11 +93,6 @@ class _HomeState extends State<Home> {
                 trailing: Icon(Icons.category),
                 onTap: () {},
               ),
-//              ListTile(
-//                title: Text('Дни рождения'),
-//                trailing: Icon(Icons.cake),
-//                onTap: () {},
-//              ),
               ListTile(
                 title: Text('Премьеры'),
                 trailing: Icon(Icons.theaters),

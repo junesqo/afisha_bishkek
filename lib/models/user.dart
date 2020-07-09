@@ -1,9 +1,14 @@
-import 'package:firebase_auth/firebase_auth.dart';
-
 class User {
-  String id;
+  final String userId;
+  final String email;
 
-  User.fromFirebase(FirebaseUser user){
-    id = user.uid;
+  User({this.email, this.userId});
+
+  Map<String, dynamic> toMap() {
+    return {'userId': userId, 'email': email};
   }
+
+  User.fromFirestore(Map<String, dynamic> firestore)
+      : userId = firestore['userId'],
+        email = firestore['email'];
 }

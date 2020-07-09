@@ -1,98 +1,84 @@
-import 'package:bishkekevents/screens/home.dart';
+import 'package:bishkekevents/blocs/auth_bloc.dart';
+import 'package:bishkekevents/blocs/product_bloc.dart';
+import 'package:bishkekevents/routes.dart';
+import 'package:bishkekevents/screens/landing.dart';
+import 'package:bishkekevents/screens/login.dart';
+import 'package:bishkekevents/services/firestore_service.dart';
+import 'package:bishkekevents/styles/colors.dart';
+import 'package:bishkekevents/styles/text.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:bishkekevents/helper/colorsys.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-import 'package:bishkekevents/screens/home_screen.dart';
-import 'SignUp/signin.dart';
-import 'SignUp/signup.dart';
+import 'dart:io';
+import 'package:provider/provider.dart';
 
 void main() => runApp(MyApp());
 
-class MyApp extends StatelessWidget {
+final authBloc = AuthBloc();
+final productBloc = ProductBloc();
+final firestoreService = FirestoreService();
+
+class MyApp extends StatefulWidget {
   @override
-  Widget build(BuildContext context) {
-//    return StreamProvider<User>.value(
-//      value: AuthService().currentUser,
-    return MaterialApp(
-      title: 'Афиша Бишкека',
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-          primaryColor: Colorsys.pink,
-          accentColor: Color(0xFF2A2D40),
-          scaffoldBackgroundColor: Color(0xFFEBE8E5),
-          fontFamily: 'Jost'),
-      home: MyHomePage(),
-//      ),
-    );
-  }
+  _MyAppState createState() => _MyAppState();
 }
 
-class MyHomePage extends StatefulWidget {
-  @override
-  _MyHomePageState createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  bool isLoading = false;
-  bool _isLogin = false;
-
-  _checkLogin() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    bool isLogin = (prefs.get('isLogin') ?? false);
-
-    setState(() {
-      _isLogin = isLogin;
-    });
-  }
-
-  // Upadte Loading value from signin class.
-  // If the user try to signin. show loading in this view.
-  _updateLoadingStatus(bool value) {
-    setState(() {
-      isLoading = value;
-    });
-  }
-
-  @override
-  void initState() {
-    _checkLogin();
-    super.initState();
-  }
-
+class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
-    return !_isLogin ? _signInWidget() : Home();
-  }
-
-  Widget _signInWidget() {
-    return Scaffold(
-      body: Stack(
-        children: <Widget>[
-          Container(
-            child: Center(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-//                  mainLogo(),
-                  SignIn(_updateLoadingStatus), // connecting with child view.
-                  SignUp(_updateLoadingStatus)
-                ],
-              ),
-            ),
-          ),
-          Positioned(
-            // Loading view in the center.
-            child: isLoading
-                ? Container(
-                    child: Center(
-                      child: CircularProgressIndicator(),
-                    ),
-                    color: Colors.white.withOpacity(0.7),
-                  )
-                : Container(),
-          ),
-        ],
+    return MultiProvider(providers: [
+      Provider(create: (context) => authBloc),
+      Provider(create: (context) => productBloc),
+      FutureProvider(
+        create: (context) => authBloc.isLoggedIn(),
+        catchError: (context, error) {
+          print(error.toString());
+        },
       ),
-    );
+      StreamProvider(create: (context) => firestoreService.fetchUnitTypes())
+    ], child: PlatformApp());
+  }
+
+  @override
+  void dispose() {
+    authBloc.dispose();
+    productBloc.dispose();
+    super.dispose();
+  }
+}
+
+class PlatformApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    var isLoggedIn = Provider.of<bool>(context);
+
+    if (Platform.isIOS) {
+      return CupertinoApp(
+          home: (isLoggedIn == null)
+              ? loadingScreen(true)
+              : (isLoggedIn == true) ? Landing() : Login(),
+          onGenerateRoute: Routes.cupertinoRoutes,
+          theme: CupertinoThemeData(
+              primaryColor: AppColors.straw,
+              scaffoldBackgroundColor: Colors.white,
+              textTheme: CupertinoTextThemeData(
+                  tabLabelTextStyle: TextStyles.suggestion)));
+    } else {
+      return MaterialApp(
+          home: (isLoggedIn == null)
+              ? loadingScreen(false)
+              : (isLoggedIn == true) ? Landing() : Login(),
+          onGenerateRoute: Routes.materialRoutes,
+          theme: ThemeData(scaffoldBackgroundColor: Colors.white));
+    }
+  }
+
+  Widget loadingScreen(bool isIOS) {
+    return (isIOS)
+        ? CupertinoPageScaffold(
+            child: Center(
+              child: CupertinoActivityIndicator(),
+            ),
+          )
+        : Scaffold(body: Center(child: CircularProgressIndicator()));
   }
 }

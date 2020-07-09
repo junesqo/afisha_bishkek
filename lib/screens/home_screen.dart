@@ -2,6 +2,7 @@ import 'package:bishkekevents/helper/colorsys.dart';
 import 'package:bishkekevents/models/event_model.dart';
 import 'package:bishkekevents/widgets/near_events.dart';
 import 'package:bishkekevents/widgets/popular_today.dart';
+import 'package:bishkekevents/widgets/products.dart';
 import 'package:bishkekevents/widgets/special_offer.dart';
 import 'package:bishkekevents/widgets/topicc.dart';
 import 'package:flutter/material.dart';
@@ -151,12 +152,6 @@ class MySubscriptions extends StatefulWidget {
 class _MySubscriptionsState extends State<MySubscriptions> {
   @override
   Widget build(BuildContext context) {
-    return Column(children: <Widget>[
-      NearEventsTile(shortlist: 4),
-      SizedBox(height: 24.0),
-      PopularToday(
-        thetitle: 'Ваши мероприятия',
-      )
-    ]);
+    return Products();
   }
 }

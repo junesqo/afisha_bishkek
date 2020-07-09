@@ -1,15 +1,30 @@
-//import 'package:bishkekevents/models/user.dart';
-//import 'package:bishkekevents/screens/auth_screen.dart';
-//import 'package:bishkekevents/screens/home.dart';
-//import 'package:flutter/material.dart';
-//import 'package:provider/provider.dart';
-//
-//class LandingPage extends StatelessWidget {
-//  const LandingPage({Key key}) : super(key: key);
-//  @override
-//  Widget build(BuildContext context) {
-//    final User user = Provider.of<User>(context);
-//    final bool isLoggedIn = user != null;
-//    return isLoggedIn ? Home() : AuthorizationPage();
-//  }
-//}
+import 'package:bishkekevents/widgets/button.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'dart:io';
+
+class Landing extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    if (Platform.isIOS) {
+      return CupertinoPageScaffold(
+        child: pageBody(context),
+      );
+    } else {
+      return Scaffold(body: pageBody(context));
+    }
+  }
+
+  Widget pageBody(BuildContext context) {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: <Widget>[
+        AppButton(
+          buttonText: 'Vendor Page',
+          buttonType: ButtonType.Straw,
+          onPressed: () => Navigator.pushNamed(context, '/home'),
+        )
+      ],
+    );
+  }
+}
