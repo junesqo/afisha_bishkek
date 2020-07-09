@@ -11,7 +11,7 @@ abstract class AppNavbar {
         backgroundColor: Colors.transparent,
         border: null,
         leading: GestureDetector(
-          child: Icon(CupertinoIcons.back, color: AppColors.straw),
+          child: Icon(CupertinoIcons.back, color: AppColors.black),
           onTap: () => Navigator.of(context).pop(),
         ));
   }
@@ -20,7 +20,7 @@ abstract class AppNavbar {
       {@required String title, bool pinned, TabBar tabBar}) {
     return SliverAppBar(
       title: Text(title, style: TextStyles.navTitleMaterial),
-      backgroundColor: AppColors.darkblue,
+      backgroundColor: AppColors.primary,
       bottom: tabBar,
       floating: true,
       pinned: (pinned == null) ? true : pinned,

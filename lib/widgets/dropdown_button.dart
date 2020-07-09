@@ -33,7 +33,7 @@ class AppDropdownButton extends StatelessWidget {
           decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(BaseStyles.borderRadius),
               border: Border.all(
-                  color: AppColors.straw, width: BaseStyles.borderWidth)),
+                  color: AppColors.black, width: BaseStyles.borderWidth)),
           child: Row(
             children: <Widget>[
               Container(
@@ -66,7 +66,7 @@ class AppDropdownButton extends StatelessWidget {
           decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(BaseStyles.borderRadius),
               border: Border.all(
-                  color: AppColors.straw, width: BaseStyles.borderWidth)),
+                  color: AppColors.black, width: BaseStyles.borderWidth)),
           child: Row(
             children: <Widget>[
               Container(
@@ -79,7 +79,7 @@ class AppDropdownButton extends StatelessWidget {
                     hint: Text(hintText, style: TextStyles.suggestion),
                     style: TextStyles.body,
                     underline: Container(),
-                    iconEnabledColor: AppColors.straw,
+                    iconEnabledColor: AppColors.black,
                     onChanged: (value) => onChanged(value),
                   ),
                 ),

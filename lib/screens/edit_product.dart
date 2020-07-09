@@ -91,7 +91,8 @@ class _EditProductState extends State<EditProduct> {
   Widget pageBody(bool isIOS, ProductBloc productBloc, BuildContext context,
       Product existingProduct) {
     var items = Provider.of<List<String>>(context);
-    var pageLabel = (existingProduct != null) ? 'Edit Product' : 'Add Product';
+    var pageLabel =
+        (existingProduct != null) ? 'Изменить данные' : 'Добавить мероприятие';
     return ListView(
       children: <Widget>[
         Text(
@@ -101,13 +102,13 @@ class _EditProductState extends State<EditProduct> {
         ),
         Padding(
           padding: BaseStyles.listPadding,
-          child: Divider(color: AppColors.darkblue),
+          child: Divider(color: AppColors.primary),
         ),
         StreamBuilder<String>(
             stream: productBloc.productName,
             builder: (context, snapshot) {
               return AppTextField(
-                hintText: 'Product Name',
+                hintText: 'Название мероприятия',
                 cupertinoIcon: FontAwesomeIcons.shoppingBasket,
                 materialIcon: FontAwesomeIcons.shoppingBasket,
                 isIOS: isIOS,
@@ -118,23 +119,23 @@ class _EditProductState extends State<EditProduct> {
                 onChanged: productBloc.changeProductName,
               );
             }),
-        StreamBuilder<String>(
-            stream: productBloc.unitType,
-            builder: (context, snapshot) {
-              return AppDropdownButton(
-                hintText: 'Unit Type',
-                items: items,
-                value: snapshot.data,
-                materialIcon: FontAwesomeIcons.balanceScale,
-                cupertinoIcon: FontAwesomeIcons.balanceScale,
-                onChanged: productBloc.changeUnitType,
-              );
-            }),
+//        StreamBuilder<String>(
+//            stream: productBloc.unitType,
+//            builder: (context, snapshot) {
+//              return AppDropdownButton(
+//                hintText: 'Unit Type',
+//                items: items,
+//                value: snapshot.data,
+//                materialIcon: FontAwesomeIcons.balanceScale,
+//                cupertinoIcon: FontAwesomeIcons.balanceScale,
+//                onChanged: productBloc.changeUnitType,
+//              );
+//            }),
         StreamBuilder<double>(
             stream: productBloc.unitPrice,
             builder: (context, snapshot) {
               return AppTextField(
-                hintText: 'Unit Price',
+                hintText: 'Цена входа',
                 cupertinoIcon: FontAwesomeIcons.tag,
                 materialIcon: FontAwesomeIcons.tag,
                 isIOS: isIOS,
@@ -146,11 +147,27 @@ class _EditProductState extends State<EditProduct> {
                 onChanged: productBloc.changeUnitPrice,
               );
             }),
+//        StreamBuilder<int>(
+//            stream: productBloc.time,
+//            builder: (context, snapshot) {
+//              return AppTextField(
+//                hintText: 'Available Units',
+//                cupertinoIcon: FontAwesomeIcons.cubes,
+//                materialIcon: FontAwesomeIcons.cubes,
+//                isIOS: isIOS,
+//                textInputType: TextInputType.number,
+//                errorText: snapshot.error,
+//                initialText: (existingProduct != null)
+//                    ? existingProduct.time.toString()
+//                    : null,
+//                onChanged: productBloc.changeTime,
+//              );
+//            }),
         StreamBuilder<int>(
             stream: productBloc.availableUnits,
             builder: (context, snapshot) {
               return AppTextField(
-                hintText: 'Available Units',
+                hintText: 'Дата',
                 cupertinoIcon: FontAwesomeIcons.cubes,
                 materialIcon: FontAwesomeIcons.cubes,
                 isIOS: isIOS,
@@ -168,7 +185,7 @@ class _EditProductState extends State<EditProduct> {
               if (!snapshot.hasData || snapshot.data == "")
                 return AppButton(
                   buttonType: ButtonType.Straw,
-                  buttonText: 'Add Image',
+                  buttonText: 'Добавить изображение',
                   onPressed: productBloc.pickImage,
                 );
 
@@ -180,7 +197,7 @@ class _EditProductState extends State<EditProduct> {
                   ),
                   AppButton(
                     buttonType: ButtonType.Straw,
-                    buttonText: 'Change Image',
+                    buttonText: 'Изменить изображение',
                     onPressed: productBloc.pickImage,
                   )
                 ],
@@ -193,7 +210,7 @@ class _EditProductState extends State<EditProduct> {
                 buttonType: (snapshot.data == true)
                     ? ButtonType.DarkBlue
                     : ButtonType.Disabled,
-                buttonText: 'Save Product',
+                buttonText: 'Сохранить мероприятие',
                 onPressed: productBloc.saveProduct,
               );
             }),
@@ -207,17 +224,19 @@ class _EditProductState extends State<EditProduct> {
 
     if (product != null) {
       //Edit
-      productBloc.changeUnitType(product.unitType);
+//      productBloc.changeUnitType(product.unitType);
       productBloc.changeProductName(product.productName);
       productBloc.changeUnitPrice(product.unitPrice.toString());
       productBloc.changeAvailableUnits(product.availableUnits.toString());
+//      productBloc.changeTime(product.time.toString());
       productBloc.changeImageUrl(product.imageUrl ?? '');
     } else {
       //Add
-      productBloc.changeUnitType(null);
+//      productBloc.changeUnitType(null);
       productBloc.changeProductName(null);
       productBloc.changeUnitPrice(null);
       productBloc.changeAvailableUnits(null);
+//      productBloc.changeTime(null);
       productBloc.changeImageUrl('');
     }
   }

@@ -67,10 +67,10 @@ class _LoginState extends State<Login> {
       children: <Widget>[
         Container(
           height: MediaQuery.of(context).size.height * .2,
-          decoration: BoxDecoration(
-              image: DecorationImage(
-                  image: AssetImage('assets/images/top_bg.png'),
-                  fit: BoxFit.fill)),
+//          decoration: BoxDecoration(
+//              image: DecorationImage(
+//                  image: AssetImage('assets/images/top_bg.png'),
+//                  fit: BoxFit.fill)),
         ),
         Container(
           height: 200.0,

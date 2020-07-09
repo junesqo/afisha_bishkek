@@ -1,4 +1,5 @@
 import 'package:bishkekevents/screens/edit_product.dart';
+import 'package:bishkekevents/screens/event_screen.dart';
 import 'package:bishkekevents/screens/home.dart';
 import 'package:bishkekevents/screens/landing.dart';
 import 'package:bishkekevents/screens/login.dart';
@@ -21,6 +22,8 @@ abstract class Routes {
 //        return MaterialPageRoute(builder: (context) => Vendor());
       case "/editproduct":
         return MaterialPageRoute(builder: (context) => EditProduct());
+      case "/eventdetails":
+        return MaterialPageRoute(builder: (context) => EventScreen());
       default:
         var routeArray = settings.name.split('/');
         if (settings.name.contains('/editproduct/')) {

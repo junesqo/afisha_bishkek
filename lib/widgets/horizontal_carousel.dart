@@ -5,17 +5,17 @@ import 'package:flutter/material.dart';
 import 'package:bishkekevents/models/event_model.dart';
 import 'package:bishkekevents/screens/event_screen.dart';
 
-class PopularToday extends StatefulWidget {
+class HorizontalCarousel extends StatefulWidget {
   final String thetitle;
 //  PopularToday(this.thetitle);
 
-  const PopularToday({Key key, this.thetitle}) : super(key: key);
+  const HorizontalCarousel({Key key, this.thetitle}) : super(key: key);
 
   @override
-  _PopularTodayState createState() => _PopularTodayState();
+  _HorizontalCarouselState createState() => _HorizontalCarouselState();
 }
 
-class _PopularTodayState extends State<PopularToday> {
+class _HorizontalCarouselState extends State<HorizontalCarousel> {
   List<EventModel> eventList = EventModel.list;
 
   @override

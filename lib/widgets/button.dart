@@ -26,7 +26,7 @@ class _AppButtonState extends State<AppButton> {
     switch (widget.buttonType) {
       case ButtonType.Straw:
         fontStyle = TextStyles.buttonTextLight;
-        buttonColor = AppColors.straw;
+        buttonColor = AppColors.black;
         break;
       case ButtonType.LightBlue:
         fontStyle = TextStyles.buttonTextLight;
@@ -34,7 +34,7 @@ class _AppButtonState extends State<AppButton> {
         break;
       case ButtonType.DarkBlue:
         fontStyle = TextStyles.buttonTextLight;
-        buttonColor = AppColors.darkblue;
+        buttonColor = AppColors.primary;
         break;
       case ButtonType.Disabled:
         fontStyle = TextStyles.buttonTextLight;

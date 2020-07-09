@@ -1,3 +1,4 @@
+import 'package:bishkekevents/screens/userscreen.dart';
 import 'package:bishkekevents/styles/colors.dart';
 import 'package:bishkekevents/widgets/orders.dart';
 import 'package:bishkekevents/widgets/products.dart';
@@ -16,7 +17,7 @@ abstract class VendorScaffold {
 
   static get _cupertinoTabBar {
     return CupertinoTabBar(
-      backgroundColor: AppColors.darkblue,
+      backgroundColor: AppColors.primary,
       items: <BottomNavigationBarItem>[
         BottomNavigationBarItem(
             icon: Icon(CupertinoIcons.create), title: Text('Products')),
@@ -37,6 +38,6 @@ abstract class VendorScaffold {
       return Orders();
     }
 
-    return Profile();
+    return UserScreen();
   }
 }

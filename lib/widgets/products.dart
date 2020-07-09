@@ -33,6 +33,7 @@ class Products extends StatelessWidget {
             children: <Widget>[
               Expanded(
                 child: ListView.builder(
+                    scrollDirection: Axis.horizontal,
                     itemCount: snapshot.data.length,
                     itemBuilder: (context, index) {
                       var product = snapshot.data[index];
@@ -41,18 +42,18 @@ class Products extends StatelessWidget {
                           availableUnits: product.availableUnits,
                           price: product.unitPrice,
                           productName: product.productName,
-                          unitType: product.unitType,
+//                          unitType: product.unitType,
                         ),
                         onTap: () => Navigator.of(context)
-                            .pushNamed('/editproduct/${product.productId}'),
+                            .pushNamed('/eventdetails/${product.productId}'),
                       );
                     }),
               ),
               GestureDetector(
                 child: Container(
                   height: 50.0,
-                  width: double.infinity,
-                  color: AppColors.straw,
+                  width: 250,
+                  color: AppColors.primary,
                   child: (Platform.isIOS)
                       ? Icon(CupertinoIcons.add,
                           color: Colors.white, size: 35.0)

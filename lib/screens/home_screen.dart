@@ -1,7 +1,7 @@
 import 'package:bishkekevents/helper/colorsys.dart';
 import 'package:bishkekevents/models/event_model.dart';
 import 'package:bishkekevents/widgets/near_events.dart';
-import 'package:bishkekevents/widgets/popular_today.dart';
+import 'package:bishkekevents/widgets/horizontal_carousel.dart';
 import 'package:bishkekevents/widgets/products.dart';
 import 'package:bishkekevents/widgets/special_offer.dart';
 import 'package:bishkekevents/widgets/topicc.dart';
@@ -130,12 +130,6 @@ class _RecommendationsState extends State<Recommendations> {
       SizedBox(height: 12),
       TopiccCarousel(),
       SizedBox(height: 24.0),
-      PopularToday(
-        thetitle: 'Популярное сегодня',
-      ),
-      SizedBox(
-        height: 24.0,
-      ),
       SpecialOffer(),
       SizedBox(height: 24.0),
       NearEventsTile(shortlist: 3),
@@ -152,6 +146,8 @@ class MySubscriptions extends StatefulWidget {
 class _MySubscriptionsState extends State<MySubscriptions> {
   @override
   Widget build(BuildContext context) {
-    return Products();
+    return ListView(
+      children: <Widget>[Container(height: 280.0, child: Products())],
+    );
   }
 }

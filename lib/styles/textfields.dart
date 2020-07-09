@@ -12,7 +12,7 @@ abstract class TextFieldStyles {
 
   static TextStyle get placeholder => TextStyles.suggestion;
 
-  static Color get cursorColor => AppColors.darkblue;
+  static Color get cursorColor => AppColors.primary;
 
   static Widget iconPrefix(IconData icon) => BaseStyles.iconPrefix(icon);
 
@@ -21,7 +21,7 @@ abstract class TextFieldStyles {
   static BoxDecoration get cupertinoDecoration {
     return BoxDecoration(
         border: Border.all(
-          color: AppColors.straw,
+          color: AppColors.black,
           width: BaseStyles.borderWidth,
         ),
         borderRadius: BorderRadius.circular(BaseStyles.borderRadius));
@@ -47,15 +47,15 @@ abstract class TextFieldStyles {
       errorStyle: TextStyles.error,
       focusedBorder: OutlineInputBorder(
           borderSide:
-              BorderSide(color: AppColors.straw, width: BaseStyles.borderWidth),
+              BorderSide(color: AppColors.black, width: BaseStyles.borderWidth),
           borderRadius: BorderRadius.circular(BaseStyles.borderRadius)),
       enabledBorder: OutlineInputBorder(
           borderSide:
-              BorderSide(color: AppColors.straw, width: BaseStyles.borderWidth),
+              BorderSide(color: AppColors.black, width: BaseStyles.borderWidth),
           borderRadius: BorderRadius.circular(BaseStyles.borderRadius)),
       focusedErrorBorder: OutlineInputBorder(
           borderSide:
-              BorderSide(color: AppColors.straw, width: BaseStyles.borderWidth),
+              BorderSide(color: AppColors.black, width: BaseStyles.borderWidth),
           borderRadius: BorderRadius.circular(BaseStyles.borderRadius)),
       errorBorder: OutlineInputBorder(
           borderSide:

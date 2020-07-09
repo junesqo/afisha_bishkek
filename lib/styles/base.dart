@@ -2,11 +2,11 @@ import 'package:bishkekevents/styles/colors.dart';
 import 'package:flutter/material.dart';
 
 abstract class BaseStyles {
-  static double get borderRadius => 25.0;
+  static double get borderRadius => 16.0;
 
-  static double get borderWidth => 2.0;
+  static double get borderWidth => 0.0;
 
-  static double get listFieldHorizontal => 25.0;
+  static double get listFieldHorizontal => 20.0;
 
   static double get listFieldVertical => 8.0;
 
@@ -20,10 +20,10 @@ abstract class BaseStyles {
   static List<BoxShadow> get boxShadow {
     return [
       BoxShadow(
-        color: AppColors.darkgray.withOpacity(.5),
-        offset: Offset(1.0, 2.0),
-        blurRadius: 2.0,
-      )
+//        color: AppColors.darkgray.withOpacity(.5),
+//        offset: Offset(1.0, 2.0),
+//        blurRadius: 2.0,
+          )
     ];
   }
 
@@ -40,7 +40,7 @@ abstract class BaseStyles {
   static Widget iconPrefix(IconData icon) {
     return Padding(
       padding: const EdgeInsets.only(left: 8.0),
-      child: Icon(icon, size: 35.0, color: AppColors.lightblue),
+      child: Icon(icon, size: 20.0, color: AppColors.lightblue),
     );
   }
 }
