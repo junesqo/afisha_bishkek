@@ -28,9 +28,9 @@ class _AppButtonState extends State<AppButton> {
         fontStyle = TextStyles.buttonTextLight;
         buttonColor = AppColors.black;
         break;
-      case ButtonType.LightBlue:
+      case ButtonType.Primary:
         fontStyle = TextStyles.buttonTextLight;
-        buttonColor = AppColors.lightblue;
+        buttonColor = AppColors.primary;
         break;
       case ButtonType.DarkBlue:
         fontStyle = TextStyles.buttonTextLight;
@@ -46,7 +46,7 @@ class _AppButtonState extends State<AppButton> {
         break;
       default:
         fontStyle = TextStyles.buttonTextLight;
-        buttonColor = AppColors.lightblue;
+        buttonColor = AppColors.primary;
         break;
     }
 
@@ -96,4 +96,4 @@ class _AppButtonState extends State<AppButton> {
   }
 }
 
-enum ButtonType { LightBlue, Straw, Disabled, DarkGray, DarkBlue }
+enum ButtonType { Primary, Straw, Disabled, DarkGray, DarkBlue }

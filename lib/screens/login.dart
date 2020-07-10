@@ -96,7 +96,7 @@ class _LoginState extends State<Login> {
             builder: (context, snapshot) {
               return AppTextField(
                 isIOS: Platform.isIOS,
-                hintText: 'Password',
+                hintText: 'Пароль',
                 cupertinoIcon: IconData(0xf4c9,
                     fontFamily: CupertinoIcons.iconFont,
                     fontPackage: CupertinoIcons.iconFontPackage),
@@ -110,9 +110,9 @@ class _LoginState extends State<Login> {
             stream: authBloc.isValid,
             builder: (context, snapshot) {
               return AppButton(
-                buttonText: 'Login',
+                buttonText: 'Войти',
                 buttonType: (snapshot.data == true)
-                    ? ButtonType.LightBlue
+                    ? ButtonType.Primary
                     : ButtonType.Disabled,
                 onPressed: authBloc.loginEmail,
               );
@@ -121,7 +121,7 @@ class _LoginState extends State<Login> {
           height: 6.0,
         ),
         Center(
-          child: Text('Or', style: TextStyles.suggestion),
+          child: Text('Или', style: TextStyles.suggestion),
         ),
         SizedBox(
           height: 6.0,
@@ -144,11 +144,11 @@ class _LoginState extends State<Login> {
           child: RichText(
               textAlign: TextAlign.center,
               text: TextSpan(
-                  text: 'New Here? ',
+                  text: 'Впервые здесь? ',
                   style: TextStyles.body,
                   children: [
                     TextSpan(
-                        text: 'Signup',
+                        text: 'Зарегестрироваться',
                         style: TextStyles.link,
                         recognizer: TapGestureRecognizer()
                           ..onTap =

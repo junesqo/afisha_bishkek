@@ -53,9 +53,9 @@ abstract class TextStyles {
         textStyle: TextStyle(color: AppColors.darkgray, fontSize: 12.0));
   }
 
-  static TextStyle get bodyLightBlue {
+  static TextStyle get bodyPrimary {
     return GoogleFonts.roboto(
-        textStyle: TextStyle(color: AppColors.lightblue, fontSize: 12.0));
+        textStyle: TextStyle(color: AppColors.primary, fontSize: 12.0));
   }
 
   static TextStyle get bodyRed {

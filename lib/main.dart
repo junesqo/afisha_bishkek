@@ -61,7 +61,7 @@ class PlatformApp extends StatelessWidget {
           onGenerateRoute: Routes.cupertinoRoutes,
           theme: CupertinoThemeData(
               primaryColor: AppColors.black,
-              scaffoldBackgroundColor: Colors.white,
+              scaffoldBackgroundColor: AppColors.background,
               textTheme: CupertinoTextThemeData(
                   tabLabelTextStyle: TextStyles.suggestion)));
     } else {
@@ -72,7 +72,7 @@ class PlatformApp extends StatelessWidget {
 //              :
               (isLoggedIn == true) ? Landing() : Login(),
           onGenerateRoute: Routes.materialRoutes,
-          theme: ThemeData(scaffoldBackgroundColor: Colors.white));
+          theme: ThemeData(scaffoldBackgroundColor: AppColors.background));
     }
   }
 
@@ -80,9 +80,12 @@ class PlatformApp extends StatelessWidget {
     return (isIOS)
         ? CupertinoPageScaffold(
             child: Center(
-              child: CupertinoActivityIndicator(),
+              child: SizedBox(height: 20, child: CupertinoActivityIndicator()),
             ),
           )
-        : Scaffold(body: Center(child: CircularProgressIndicator()));
+        : Scaffold(
+            body: Center(
+                child: SizedBox(
+                    height: 20.0, child: CircularProgressIndicator())));
   }
 }

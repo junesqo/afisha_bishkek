@@ -32,11 +32,11 @@ class _EditProductState extends State<EditProduct> {
     productBloc.productSaved.listen((saved) {
       if (saved != null && saved == true && context != null) {
         Fluttertoast.showToast(
-            msg: "Product Saved",
+            msg: "Мероприятие создано",
             toastLength: Toast.LENGTH_SHORT,
             gravity: ToastGravity.CENTER,
             timeInSecForIosWeb: 2,
-            backgroundColor: AppColors.lightblue,
+            backgroundColor: AppColors.red,
             textColor: Colors.white,
             fontSize: 16.0);
 
@@ -97,7 +97,7 @@ class _EditProductState extends State<EditProduct> {
       children: <Widget>[
         Text(
           pageLabel,
-          style: TextStyles.subtitle,
+          style: TextStyles.title,
           textAlign: TextAlign.center,
         ),
         Padding(

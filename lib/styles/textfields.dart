@@ -50,8 +50,7 @@ abstract class TextFieldStyles {
               BorderSide(color: AppColors.black, width: BaseStyles.borderWidth),
           borderRadius: BorderRadius.circular(BaseStyles.borderRadius)),
       enabledBorder: OutlineInputBorder(
-          borderSide:
-              BorderSide(color: AppColors.black, width: BaseStyles.borderWidth),
+          borderSide: BorderSide(color: AppColors.black),
           borderRadius: BorderRadius.circular(BaseStyles.borderRadius)),
       focusedErrorBorder: OutlineInputBorder(
           borderSide:

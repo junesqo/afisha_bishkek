@@ -1,6 +1,7 @@
 import 'package:bishkekevents/styles/base.dart';
 import 'package:bishkekevents/styles/colors.dart';
 import 'package:bishkekevents/styles/text.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
@@ -32,16 +33,25 @@ class AppCard extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           ClipRRect(
-            borderRadius: BorderRadius.circular(BaseStyles.borderRadius),
+            borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(BaseStyles.borderRadius),
+              topRight: Radius.circular(BaseStyles.borderRadius),
+            ),
             child: Image.asset(
               'assets/1.jpg',
-              height: 131.0,
+              height: 130.0,
               width: 250,
               fit: BoxFit.cover,
             ),
           ),
           Container(
             color: Colors.white,
+            height: 90,
+            width: 250,
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.only(
+                    bottomLeft: Radius.circular(BaseStyles.borderRadius),
+                    bottomRight: Radius.circular(BaseStyles.borderRadius))),
             child: Padding(
               padding: const EdgeInsets.all(8.0),
               child: Column(
@@ -51,7 +61,7 @@ class AppCard extends StatelessWidget {
                   Text('${formatCurrency.format(price)}/$unitType',
                       style: TextStyles.eventnumtext),
                   (availableUnits > 0)
-                      ? Text('In Stock', style: TextStyles.bodyLightBlue)
+                      ? Text('In Stock', style: TextStyles.bodyPrimary)
                       : Text('Currently Unavailable', style: TextStyles.bodyRed)
                 ],
               ),
